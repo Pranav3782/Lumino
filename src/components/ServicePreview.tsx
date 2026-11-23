@@ -18,7 +18,7 @@ export function ServicePreview({
         {kind === 'ui' && <UiArt />}
         {kind === 'web' && <WebArt />}
         {kind === 'brand' && <BrandArt />}
-        {kind === 'marketing' && <MarketingArt />}
+        {kind === 'app' && <AppArt />}
         {kind === 'seo' && <SeoArt />}
       </div>
       <div className="flex items-center justify-between px-4 py-3">
@@ -190,45 +190,80 @@ function BrandArt() {
   )
 }
 
-function MarketingArt() {
+function AppArt() {
   return (
     <Frame className="bg-[#171717]">
       <div className="absolute inset-0 opacity-25 [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,.35)_1px,transparent_0)] [background-size:18px_18px]" />
-      <div className="absolute left-5 top-5 w-[176px] rotate-[-4deg] rounded-xl bg-white p-3 shadow-[0_16px_30px_-10px_rgba(0,0,0,.45)]">
-        <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FF6535] text-[10px]">
-            ✦
-          </span>
-          <div>
-            <p className="text-[7px] font-semibold text-ink">New campaign live</p>
-            <p className="text-[6px] text-mute">Lumino × Northwind</p>
-          </div>
-        </div>
-        <div className="mt-2 h-1 w-full rounded-full bg-[#F1F1F1]">
-          <div className="h-full w-3/4 rounded-full bg-[#625BFF]" />
-        </div>
+      <div className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1.5 text-[6px] font-medium uppercase tracking-[0.14em] text-white/80">
+        <span className="h-1 w-1 rounded-full bg-[#FF6535]" />
+        Cross-platform
       </div>
-      <div className="absolute right-5 top-[66px] w-[150px] rotate-3 rounded-xl bg-[#625BFF] p-3 text-white shadow-[0_16px_30px_-10px_rgba(0,0,0,.45)]">
-        <p className="text-[6px] uppercase tracking-[0.16em] text-white/60">Reach</p>
-        <p className="mt-1 font-display text-[20px] leading-none tracking-[-0.04em]">
-          +148%
+
+      <div className="absolute left-[30px] top-[36px] h-[134px] w-[78px] -rotate-6 overflow-hidden rounded-[17px] border-[3px] border-[#303030] bg-[#FAFAF8] p-2 shadow-[0_16px_30px_-10px_rgba(0,0,0,.5)]">
+        <div className="flex items-center justify-between text-[5px] font-semibold text-ink/70">
+          <span>9:41</span>
+          <span className="h-1 w-3 rounded-full bg-ink/20" />
+        </div>
+        <p className="mt-2 text-[5px] uppercase tracking-[0.14em] text-mute">Projects</p>
+        <p className="font-display text-[14px] font-medium leading-none tracking-[-0.04em] text-ink">
+          12 active
         </p>
-        <div className="mt-2 flex items-end gap-1">
-          {[8, 12, 16, 24, 30].map((height, i) => (
-            <span
-              key={i}
-              className="w-2 rounded-sm bg-white/80"
-              style={{ height, opacity: 0.4 + i * 0.13 }}
-            />
+        <div className="mt-2 space-y-1.5">
+          {['Northwind', 'Orbit Labs'].map((label, i) => (
+            <div key={label} className="rounded-md bg-[#EFEEFF] p-1.5">
+              <div className="flex items-center gap-1">
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ background: i === 0 ? '#625BFF' : '#FF6535' }}
+                />
+                <span className="text-[5px] font-medium text-ink">{label}</span>
+              </div>
+              <div className="mt-1 h-0.5 w-8 rounded-full bg-ink/10" />
+            </div>
           ))}
         </div>
+        <div className="absolute inset-x-2 bottom-2 flex items-center justify-around rounded-full bg-ink px-2 py-1">
+          <span className="h-1 w-1 rounded-full bg-white" />
+          <span className="h-1 w-1 rounded-full bg-white/30" />
+          <span className="h-1 w-1 rounded-full bg-white/30" />
+        </div>
       </div>
-      <div className="absolute bottom-4 left-5 flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1.5 text-[6px] font-medium uppercase tracking-[0.14em] text-white/80">
+
+      <div className="absolute right-[24px] top-[18px] h-[154px] w-[88px] rotate-6 overflow-hidden rounded-[19px] border-[3px] border-[#303030] bg-[#625BFF] p-2.5 text-white shadow-[0_16px_30px_-10px_rgba(0,0,0,.5)]">
+        <div className="mx-auto h-1 w-6 rounded-full bg-white/30" />
+        <div className="mt-2 flex items-center justify-between">
+          <p className="text-[6px] font-semibold">Lumino</p>
+          <span className="flex h-3 w-3 items-center justify-center rounded-full bg-white/15 text-[5px]">
+            P
+          </span>
+        </div>
+        <p className="mt-2 text-[5px] text-white/55">Good morning</p>
+        <div className="mt-1 rounded-lg bg-white/12 p-2">
+          <p className="text-[5px] uppercase tracking-[0.14em] text-white/55">Today</p>
+          <p className="mt-0.5 font-display text-[14px] font-medium leading-none tracking-[-0.04em]">
+            86%
+          </p>
+          <div className="mt-1.5 flex items-end gap-1">
+            {[7, 12, 9, 16, 13, 19].map((height, i) => (
+              <span
+                key={i}
+                className="w-1.5 rounded-sm bg-white/80"
+                style={{ height, opacity: 0.4 + i * 0.1 }}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="mt-1.5 rounded-md bg-white px-2 py-1 text-ink">
+          <p className="text-[5px] font-semibold">Sync complete</p>
+        </div>
+      </div>
+
+      <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/10 px-2.5 py-1.5 text-[6px] font-medium uppercase tracking-[0.14em] text-white/80">
         <span className="h-1 w-1 rounded-full bg-[#FF6535]" />
-        Always-on content
+        Built for everyday use
       </div>
       <div className="absolute bottom-4 right-4 text-[6px] uppercase tracking-[0.16em] text-white/30">
-        04 / Social
+        04 / Mobile
       </div>
     </Frame>
   )

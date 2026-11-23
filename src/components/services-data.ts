@@ -1,4 +1,4 @@
-export type ServiceKind = 'ui' | 'web' | 'brand' | 'marketing' | 'seo'
+export type ServiceKind = 'ui' | 'web' | 'brand' | 'app' | 'seo'
 
 export type Service = {
   index: string
@@ -39,11 +39,11 @@ export const services: Service[] = [
   },
   {
     index: '04',
-    title: 'Digital Marketing',
+    title: 'App Development',
     description:
-      'Campaigns and content that carry your voice further without losing what makes it yours.',
-    tags: ['Campaigns', 'Content', 'Social', 'Email'],
-    kind: 'marketing',
+      'Building modern, scalable mobile applications with intuitive experiences and reliable functionality.',
+    tags: ['iOS & Android', 'React Native', 'API integration', 'App UX'],
+    kind: 'app',
     accent: '#625BFF',
   },
   {

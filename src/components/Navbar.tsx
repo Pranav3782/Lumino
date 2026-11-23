@@ -2,7 +2,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useSmoothScroll } from '../lib/smooth-scroll'
-import { cn, navItems, site } from '../lib/utils'
+import { cn, navItems, site, whatsappLink } from '../lib/utils'
 import { Magnetic } from './ui/Magnetic'
 
 export function Navbar() {
@@ -148,9 +148,11 @@ export function Navbar() {
           <div className="flex items-center justify-self-end gap-2.5">
             <Magnetic strength={0.18}>
               <a
-                href="#contact"
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer noopener"
                 className="group inline-flex h-10 items-center gap-2 rounded-full bg-orange px-4 text-[12px] font-semibold tracking-[-0.01em] text-ink transition-colors duration-300 hover:bg-ink hover:text-white sm:px-5"
-                data-cursor="Say hello"
+                data-cursor="WhatsApp"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-ink transition-colors duration-300 group-hover:bg-orange" />
                 Let&apos;s Talk

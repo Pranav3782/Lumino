@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
 import { useCallback, useRef, useState } from 'react'
+import { whatsappLink } from '../lib/utils'
 import { HeroAnnotations, type HeroAnnotationLayout } from './HeroAnnotations'
 import { InlineVisual } from './InlineVisual'
 import { Marquee } from './ui/Marquee'
@@ -10,7 +11,7 @@ const SERVICES = [
   'UI/UX Design',
   'Website Development',
   'Branding & Identity',
-  'Digital Marketing',
+  'App Development',
   'SEO & Growth',
 ]
 
@@ -114,6 +115,7 @@ export function Hero({ ready }: { ready: boolean }) {
                 <span ref={greatRef}>great</span>
                 <WordCycler
                   state={wordState}
+                  ready={ready}
                   onMetrics={handleWordMetrics}
                   className="ml-3.5 md:ml-6"
                 />
@@ -129,7 +131,9 @@ export function Hero({ ready }: { ready: boolean }) {
           >
             <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
               <motion.a
-                href="#contact"
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer noopener"
                 className="group relative inline-flex h-12 items-center gap-2.5 overflow-hidden rounded-full bg-ink pl-6 pr-2.5 text-[13px] font-medium text-white transition-colors duration-300 hover:bg-orange hover:text-ink"
                 data-cursor="Start"
                 whileHover={reduce ? undefined : { y: -2, scale: 1.015 }}

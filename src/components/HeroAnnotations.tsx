@@ -251,11 +251,9 @@ function WordCircle({
 
   return (
     <>
-      <svg
+      <div
+        data-circle-anchor="word"
         aria-hidden="true"
-        viewBox={`0 0 ${CIRCLE_WIDTH} ${CIRCLE_HEIGHT}`}
-        preserveAspectRatio="none"
-        fill="none"
         className="pointer-events-none absolute z-0 overflow-visible"
         style={{
           left,
@@ -264,25 +262,33 @@ function WordCircle({
           height,
         }}
       >
-        <path
-          ref={pathRef}
-          data-annotation="circle"
-          data-circle-progress={circleProgress.toFixed(4)}
-          data-path-length={pathLength.toFixed(2)}
-          d={CIRCLE_PATH}
-          vectorEffect="non-scaling-stroke"
-          stroke={state.word.accent}
-          strokeWidth={1.6}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeDasharray={length ? `${length} ${length}` : '0 9999'}
-          strokeDashoffset={length ? length * (1 - circleProgress) : 0}
-          style={{
-            opacity: pathVisible ? 0.82 : 0,
-            transition: 'opacity 120ms linear',
-          }}
-        />
-      </svg>
+        <svg
+          aria-hidden="true"
+          viewBox={`0 0 ${CIRCLE_WIDTH} ${CIRCLE_HEIGHT}`}
+          preserveAspectRatio="none"
+          fill="none"
+          className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+        >
+          <path
+            ref={pathRef}
+            data-annotation="circle"
+            data-circle-progress={circleProgress.toFixed(4)}
+            data-path-length={pathLength.toFixed(2)}
+            d={CIRCLE_PATH}
+            vectorEffect="non-scaling-stroke"
+            stroke={state.word.accent}
+            strokeWidth={1.6}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeDasharray={length ? `${length} ${length}` : '0 9999'}
+            strokeDashoffset={length ? length * (1 - circleProgress) : 0}
+            style={{
+              opacity: pathVisible ? 0.82 : 0,
+              transition: 'opacity 120ms linear',
+            }}
+          />
+        </svg>
+      </div>
 
       <CursorTag
         name="LUMEN"

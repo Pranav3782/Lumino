@@ -2,13 +2,6 @@ import { ArrowUpRight } from 'lucide-react'
 import { MaskedLines, Reveal } from './ui/Reveal'
 import { SectionLabel } from './ui/SectionLabel'
 
-const stats = [
-  { value: '128', suffix: '+', label: 'Projects shipped' },
-  { value: '09', suffix: '', label: 'Years independent' },
-  { value: '14', suffix: '', label: 'Industries served' },
-  { value: '4.9', suffix: '/5', label: 'Partner rating' },
-]
-
 export function Intro() {
   return (
     <section id="studio" className="relative py-24 md:py-32 lg:py-40">
@@ -60,27 +53,6 @@ export function Intro() {
           </div>
         </div>
 
-        <div className="mt-20 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-line pt-10 md:mt-24 md:grid-cols-4 md:gap-0 md:divide-x md:divide-line">
-          {stats.map((stat, index) => (
-            <Reveal
-              key={stat.label}
-              className={index === 0 ? 'md:pr-8' : 'md:px-8 lg:px-10'}
-              delay={index * 0.06}
-            >
-              <div className="flex items-baseline">
-                <span className="font-display text-[clamp(2.4rem,4.4vw,3.9rem)] font-medium leading-none tracking-[-0.045em] tabular-nums">
-                  {stat.value}
-                </span>
-                <span className="ml-0.5 font-display text-lg font-medium text-orange-deep">
-                  {stat.suffix}
-                </span>
-              </div>
-              <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.18em] text-mute">
-                {stat.label}
-              </p>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   )

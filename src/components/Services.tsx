@@ -56,8 +56,9 @@ export function Services() {
             <Reveal delay={0.1}>
               <p className="max-w-sm text-[15px] leading-[1.7] text-mute">
                 Five disciplines, one senior team. From UI/UX design and custom
-                website development to branding, SEO and digital growth, we plug in
-                where you need us — from the first idea to the last line of code.
+                website development to branding, app development, SEO and digital
+                growth, we plug in where you need us — from the first idea to the
+                last line of code.
               </p>
             </Reveal>
             <Reveal delay={0.16}>

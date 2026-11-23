@@ -177,10 +177,12 @@ export function useWordCycle(ready: boolean): WordCycleState {
 
 export function WordCycler({
   state,
+  ready,
   onMetrics,
   className,
 }: {
   state: WordCycleState
+  ready: boolean
   onMetrics?: (metrics: WordMetrics) => void
   className?: string
 }) {
@@ -188,6 +190,7 @@ export function WordCycler({
   const rootRef = useRef<HTMLSpanElement>(null)
   const baselineRef = useRef<HTMLSpanElement>(null)
   const onMetricsRef = useRef(onMetrics)
+  const measureRef = useRef<() => void>(() => {})
   const highlighted = highlightProgress > 0 && stage !== 'exit' && stage !== 'idle'
 
   useEffect(() => {
@@ -195,6 +198,8 @@ export function WordCycler({
   }, [onMetrics])
 
   const measure = useCallback(() => {
+    if (!ready) return
+
     const root = rootRef.current
     const hidden = root?.querySelector<HTMLElement>(`[data-word="${word.text}"]`)
     if (!root || !hidden) return
@@ -230,7 +235,11 @@ export function WordCycler({
       bottom,
       fontSize,
     })
-  }, [word.text])
+  }, [ready, word.text])
+
+  useEffect(() => {
+    measureRef.current = measure
+  }, [measure])
 
   useLayoutEffect(() => {
     measure()
@@ -239,11 +248,32 @@ export function WordCycler({
   }, [measure, reduce])
 
   useEffect(() => {
+    if (!ready) return
+    let frame = 0
+    const stopAt = performance.now() + 1700
+
+    const trackEntrance = () => {
+      measureRef.current()
+      if (performance.now() < stopAt) {
+        frame = window.requestAnimationFrame(trackEntrance)
+      }
+    }
+
+    frame = window.requestAnimationFrame(trackEntrance)
+    return () => window.cancelAnimationFrame(frame)
+  }, [ready])
+
+  useEffect(() => {
     if (!rootRef.current) return
     const observer = new ResizeObserver(measure)
     observer.observe(rootRef.current)
     void document.fonts.ready.then(measure)
-    return () => observer.disconnect()
+    const handleResize = () => measure()
+    window.addEventListener('resize', handleResize)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', handleResize)
+    }
   }, [measure])
 
   useEffect(() => {

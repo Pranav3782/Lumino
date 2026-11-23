@@ -51,9 +51,9 @@ export function About() {
             <div className="mt-8 max-w-xl space-y-4 text-[15px] leading-[1.75] text-mute">
               <Reveal delay={0.05}>
                 <p>
-                  Lumino Tech Solutions is a fourteen-person technology and design
-                  company. We’re strategists, designers and engineers who’d rather
-                  make fewer things, better.
+                  Lumino Tech Solutions is a technology and design company.
+                  We’re strategists, designers and engineers who’d rather make
+                  fewer things, better.
                 </p>
               </Reveal>
               <Reveal delay={0.12}>
@@ -159,10 +159,8 @@ export function About() {
                     <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-ink/45">
                       Design-led technology
                     </p>
-                    <div className="mt-6 flex items-center justify-between border-t border-ink/10 pt-4 text-[9px] font-medium uppercase tracking-[0.14em] text-ink/55">
-                      <span>14 people</span>
+                    <div className="mt-6 border-t border-ink/10 pt-4 text-[9px] font-medium uppercase tracking-[0.14em] text-ink/55">
                       <span>5 disciplines</span>
-                      <span>One team</span>
                     </div>
                   </motion.div>
                 </div>

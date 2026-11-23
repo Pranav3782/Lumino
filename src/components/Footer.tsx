@@ -1,11 +1,10 @@
 import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import { useSmoothScroll } from '../lib/smooth-scroll'
-import { navItems, site } from '../lib/utils'
+import { navItems, site, whatsappLink } from '../lib/utils'
 
 const socials = [
-  { label: 'Instagram', href: 'https://www.instagram.com' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com' },
-  { label: 'Behance', href: 'https://www.behance.net' },
+  { label: 'Instagram', href: site.instagramUrl },
+  { label: 'WhatsApp', href: whatsappLink },
 ]
 
 export function Footer() {
@@ -87,6 +86,19 @@ export function Footer() {
             >
               {site.email}
             </a>
+            <div className="mt-3 space-y-1 text-[13px] text-ink/70">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="link-underline inline-block py-1 transition-colors duration-300 hover:text-ink"
+              >
+                {site.whatsappNumber}
+              </a>
+              <p className="text-[10px] tracking-[0.16em] text-mute">
+                WhatsApp: @{site.whatsappUsername}
+              </p>
+            </div>
             <button
               type="button"
               onClick={() => scrollTo('#top')}

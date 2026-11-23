@@ -1,14 +1,13 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Check, Copy } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { site } from '../lib/utils'
+import { site, whatsappLink } from '../lib/utils'
 import { Magnetic } from './ui/Magnetic'
 import { MaskedLines } from './ui/Reveal'
 
 const socials = [
-  { label: 'Instagram', href: 'https://www.instagram.com' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com' },
-  { label: 'Behance', href: 'https://www.behance.net' },
+  { label: 'Instagram', href: site.instagramUrl },
+  { label: 'WhatsApp', href: whatsappLink },
 ]
 
 export function Contact() {
@@ -89,9 +88,11 @@ export function Contact() {
               <div className="mt-7 flex flex-col items-start gap-4">
                 <Magnetic strength={0.18}>
                   <a
-                    href={`mailto:${site.email}?subject=New%20project%20enquiry`}
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noreferrer noopener"
                     className="group inline-flex h-14 items-center gap-3 rounded-full bg-orange pl-7 pr-2.5 text-[13px] font-medium text-ink transition-colors duration-300 hover:bg-white focus-visible:ring-offset-0"
-                    data-cursor="Email"
+                    data-cursor="WhatsApp"
                   >
                     Start a project
                     <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-white transition-colors duration-300 group-hover:bg-orange-deep">
@@ -154,6 +155,17 @@ export function Contact() {
               >
                 {site.email}
               </a>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="link-underline mt-1 inline-block py-1 text-[13px] text-white/75 hover:text-white"
+              >
+                {site.whatsappNumber}
+              </a>
+              <p className="mt-1 text-[10px] tracking-[0.16em] text-white/40">
+                WhatsApp: @{site.whatsappUsername}
+              </p>
               <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-white/40">
                 Lumino Tech Solutions
               </p>
